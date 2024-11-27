@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt-get update && apt-get install -y openssh-server
-# Нашел стандартный Dockerfile для ssh-сервера
+# Нашла стандартный Dockerfile для ssh-сервера
 # Configure SSH
 RUN mkdir /var/run/sshd
 RUN echo 'root:redhat' | chpasswd
