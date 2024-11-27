@@ -3,7 +3,7 @@
   become: yes
   gather_facts: yes
   tasks:
-    - name: Gather facts # Использовал для дебага
+    - name: Gather facts # Использовала для дебага
       setup:
     - name: Установка nginx
       apt:
