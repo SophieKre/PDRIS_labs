@@ -1,7 +1,0 @@
-- name: run application
-  hosts: localhost
-  tasks:
-    - name: docker-compose up
-      command: docker-compose up -d --build
-      args:
-        chdir: "{{ playbook_dir }}/.."
