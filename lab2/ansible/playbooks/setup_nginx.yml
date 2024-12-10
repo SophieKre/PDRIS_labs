@@ -1,0 +1,6 @@
+---
+- name: Установка и настройка Nginx
+  hosts: all
+  become: true
+  roles:
+    - nginx

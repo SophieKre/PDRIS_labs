@@ -1,0 +1,15 @@
+---
+- name: Установить Nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Копировать конфигурационный файл Nginx
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+
+- name: Перезапустить Nginx
+  service:
+    name: nginx
+    state: restarted
