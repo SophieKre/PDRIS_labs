@@ -1,0 +1,32 @@
+---
+- name: Установить зависимости
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - python3
+    - python3-pip
+    - python3-venv
+    - unzip
+
+- name: Создать директорию для приложения
+  file:
+    path: /app
+    state: directory
+
+- name: Копировать приложение
+  copy:
+    src: "{{ playbook_dir }}/../app/"
+    dest: /app/
+    remote_src: no
+
+- name: Создать виртуальное окружение
+  command: python3 -m venv /venv
+
+- name: Установить зависимости приложения
+  pip:
+    requirements: /app/requirements.txt
+    virtualenv: /venv/
+
+- name: Запустить приложение
+  shell: nohup /app/run.sh > /app/app.log 2>&1 &
